@@ -5,7 +5,7 @@ ActiveAdmin.register Booking do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :service_id, :service_provider_id, :customer_id, :service_available_slot_id, :status
+  permit_params :service_id, :service_provider_id, :customer_id, :service_available_slot_id, :status
   #
   # or
   #

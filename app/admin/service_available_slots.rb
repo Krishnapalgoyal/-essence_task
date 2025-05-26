@@ -5,7 +5,7 @@ ActiveAdmin.register ServiceAvailableSlot do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :service_id, :start_time, :end_time
+  permit_params :service_id, :start_time, :end_time
   #
   # or
   #

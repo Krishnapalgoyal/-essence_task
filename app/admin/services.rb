@@ -5,7 +5,7 @@ ActiveAdmin.register Service do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :name, :description, :service_provider_id
+  permit_params :name, :description, :service_provider_id
   #
   # or
   #
