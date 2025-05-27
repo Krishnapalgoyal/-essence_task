@@ -4,5 +4,21 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  enum role: { admin: 0, service_provider: 1, customer: 2 }
+  enum role: { customer: 0, service_provider: 1 }
+
+  has_many :service_providers
+  has_many :customers
+
+  after_create :set_role
+
+
+  private
+  def set_role
+    if role == "service_provider"
+      user = service_providers.new()
+    else
+      user = customers.new()
+    end
+    user.save
+  end
 end

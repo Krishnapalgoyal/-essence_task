@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :role %>
+    <%= f.select :role, User.roles.keys.map { |role| [role.titleize, role] }, { prompt: 'Select Role' }, { autocomplete: 'Role' } %>
+  </div>
+
+  <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
