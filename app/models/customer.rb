@@ -1,5 +1,6 @@
 class Customer < ApplicationRecord
   belongs_to :user
+  has_many :bookings
 
   def self.ransackable_associations(auth_object = nil)
     ["user"]

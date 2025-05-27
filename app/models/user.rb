@@ -11,14 +11,19 @@ class User < ApplicationRecord
 
   after_create :set_role
 
+  def is_service_provider?
+    if role == "service_provider"
+      return true
+    end
+  end
 
   private
   def set_role
-    if role == "service_provider"
-      user = service_providers.new()
+    if is_service_provider?
+      build_service_provider
     else
-      user = customers.new()
+      build_customer
     end
-    user.save
+    save
   end
 end

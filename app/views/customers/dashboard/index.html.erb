@@ -1,1 +1,20 @@
 <h1>Welcome, Customer</h1>
+
+<%= link_to "My Booking Requests", customers_bookings_path, class: "btn btn-primary mb-3" %>
+
+
+<% if user_signed_in? %>
+  <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+<% end %>
+
+<h2>Welcome, <%= current_user.email %></h2>
+
+<h3>Available Services:</h3>
+<ul>
+  <% @services.each do |service| %>
+    <li>
+      <strong><%= service.name %></strong> by <%= service.service_provider.user.email %>
+      <%= link_to 'View Slots', customers_service_service_available_slots_path(service) %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,12 @@
+<h2>Available Slots for <%= @service.name %></h2>
+
+<ul>
+  <% @slots.each do |slot| %>
+    <li>
+      <%= slot.start_time.strftime("%Y-%m-%d %H:%M") %> to <%= slot.end_time.strftime("%H:%M") %>
+      <%= link_to 'Book Now', new_customers_service_service_available_slot_booking_path(@service, slot) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back to Services', customers_dashboard_path %>

@@ -6,10 +6,6 @@ Rails.application.routes.draw do
   registrations: 'users/registrations'
 }
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
@@ -19,15 +15,23 @@ Rails.application.routes.draw do
     resources :services do
       resources :service_available_slots
     end
+
+    get 'bookings/requests', to: 'bookings#requests', as: 'booking_requests'
+    patch 'bookings/:id/accept', to: 'bookings#accept', as: 'accept_booking'
+    patch 'bookings/:id/reject', to: 'bookings#reject', as: 'reject_booking'
   end
 
   namespace :customers do
     get 'dashboard', to: 'dashboard#index'
+
     resources :services, only: [:index, :show] do
       resources :service_available_slots, only: [:index] do
-        post 'book', on: :member
+        resources :bookings, only: [:index, :new, :create, :destroy]
       end
     end
+
+    resources :bookings, only: [:index, :show]
   end
+
   root "home#index"
 end

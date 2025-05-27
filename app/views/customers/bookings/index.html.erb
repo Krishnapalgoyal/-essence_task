@@ -1,0 +1,27 @@
+<h2>My Bookings</h2>
+
+<% if @bookings&.any? %>
+  <% @bookings.each do |booking| %>
+    <div class="card mb-3 p-3">
+      <h5><%= booking.service.name %></h5>
+      <p>
+        Slot: <%= booking.service_available_slot.start_time.strftime("%Y-%m-%d %H:%M") %><br>
+        Status: <%= booking.status.humanize %>
+      </p>
+
+      <div class="btn-group" role="group">
+        <%# View service details (optional page) %>
+        <%= link_to "Service Details", customers_service_service_available_slots_path(booking.service), class: "btn btn-outline-primary btn-sm" %>
+
+        <%#= link_to "Slot Info", customers_service_service_available_slot_path(booking.service, booking.service_available_slot), class: "btn btn-outline-info btn-sm" %>
+
+        <%# Cancel booking if still active (e.g., not completed or canceled) %>
+        <% if booking.requested? || booking.confirmed? %>
+          <%= link_to "Cancel", customers_booking_path(booking), method: :delete, data: { confirm: "Are you sure you want to cancel this booking?" }, class: "btn btn-outline-danger btn-sm" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p>No bookings yet. <%= link_to "Browse Services", customers_dashboard_path %></p>
+<% end %>

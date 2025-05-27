@@ -1,0 +1,10 @@
+<h2>Confirm Booking</h2>
+
+<p><strong>Service:</strong> <%= @slot.service.name %></p>
+<p><strong>Time:</strong> <%= @slot.start_time.strftime("%Y-%m-%d %H:%M") %> - <%= @slot.end_time.strftime("%H:%M") %></p>
+
+<%= form_with url: customers_service_service_available_slot_bookings_path(@slot.service, @slot), method: :post do |f| %>
+  <%= f.submit "Confirm Booking", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to 'Back', customers_service_service_available_slots_path(@slot.service) %>

@@ -1,6 +1,7 @@
 class ServiceProvider < ApplicationRecord
   belongs_to :user
   has_many :services
+  has_many :bookings, through: :services
 
   def self.ransackable_associations(auth_object = nil)
     ["user"]

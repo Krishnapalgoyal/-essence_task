@@ -1,0 +1,20 @@
+<h2>Booking Requests</h2>
+
+<% if @bookings.any? %>
+  <% @bookings.each do |booking| %>
+    <div class="card mb-3 p-3">
+      <p>
+        <strong>Service:</strong> <%= booking.service.name %><br>
+        <strong>Customer:</strong> <%= booking.customer.user.email %><br>
+        <strong>Slot:</strong> <%= booking.service_available_slot.start_time.strftime("%Y-%m-%d %H:%M") %>
+      </p>
+
+      <div class="btn-group">
+		  <%= button_to "Accept", service_providers_accept_booking_path(booking), method: :patch, class: "btn btn-success" %>
+		  <%= button_to "Reject", service_providers_reject_booking_path(booking), method: :patch, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+		</div>
+    </div>
+  <% end %>
+<% else %>
+  <p>No pending booking requests.</p>
+<% end %>

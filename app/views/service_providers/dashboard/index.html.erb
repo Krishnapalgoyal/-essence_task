@@ -3,3 +3,10 @@
 <p>Here is your dashboard.</p>
 
 <%= link_to 'Manage My Services', service_providers_services_path, class: 'btn btn-primary' %>
+<%= link_to "View Booking Requests", service_providers_booking_requests_path, class: "btn btn-primary" %>
+
+<br>
+<br>
+<% if user_signed_in? %>
+  <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+<% end %>
