@@ -5,6 +5,7 @@ module ServiceProviders
     before_action :authorize_service_provider!
     before_action :set_service
     before_action :set_slot, only: [:edit, :update, :destroy, :show]
+    load_and_authorize_resource
 
     def index
       @slots = @service.service_available_slots.order(:start_time)
@@ -61,3 +62,4 @@ module ServiceProviders
     end
   end
 end
+pro

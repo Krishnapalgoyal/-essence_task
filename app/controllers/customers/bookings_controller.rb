@@ -3,6 +3,7 @@ module Customers
     before_action :authenticate_user!
     before_action :authorize_customer!
     before_action :set_slot, only: [:new, :create]
+    load_and_authorize_resource
 
     def index
       @bookings = current_user&.customer&.bookings&.includes(:service, :service_available_slot)
@@ -45,6 +46,7 @@ module Customers
         redirect_to customers_bookings_path, alert: "Cannot cancel this booking."
       end
     end
+
 
     private
 

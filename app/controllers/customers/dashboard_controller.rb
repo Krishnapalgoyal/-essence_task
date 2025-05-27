@@ -2,6 +2,7 @@ module Customers
   class DashboardController < ApplicationController
     before_action :authenticate_user!
     before_action :authorize_customer!
+    
 
     def index
       @services = Service.includes(:service_provider)

@@ -4,6 +4,7 @@ module ServiceProviders
     before_action :authenticate_user!
     before_action :authorize_service_provider!
     before_action :set_service, only: [:show, :edit, :update, :destroy]
+    load_and_authorize_resource
 
     def index
       @services = current_user.service_provider.services

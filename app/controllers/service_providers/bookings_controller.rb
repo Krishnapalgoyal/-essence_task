@@ -2,6 +2,7 @@ module ServiceProviders
   class BookingsController < ApplicationController
     before_action :authenticate_user!
     before_action :authorize_provider!
+    load_and_authorize_resource
 
     def requests
       @bookings = current_user.service_provider.bookings.includes(:service, :customer).requested

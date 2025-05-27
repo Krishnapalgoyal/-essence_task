@@ -3,6 +3,7 @@ module Customers
     before_action :authenticate_user!
     before_action :authorize_customer!
     before_action :set_service
+    load_and_authorize_resource
 
     def index
       @slots = @service.service_available_slots.available.order(:start_time)
