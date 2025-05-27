@@ -1,0 +1,27 @@
+<h2>Time Slots for <%= @service.name %></h2>
+
+<%= link_to 'New Slot', new_service_providers_service_service_available_slot_path(@service), class: 'btn btn-primary' %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @slots.each do |slot| %>
+      <tr>
+        <td><%= slot.start_time.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= slot.end_time.strftime("%Y-%m-%d %H:%M") %></td>
+        <td>
+          <%= link_to 'Show', service_providers_service_service_available_slot_path(@service, slot) %> |
+          <%= link_to 'Edit', edit_service_providers_service_service_available_slot_path(@service, slot) %> |
+          <%= link_to 'Delete', service_providers_service_service_available_slot_path(@service, slot),
+                method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

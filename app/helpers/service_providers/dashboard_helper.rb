@@ -1,0 +1,2 @@
+module ServiceProviders::DashboardHelper
+end

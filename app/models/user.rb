@@ -6,8 +6,8 @@ class User < ApplicationRecord
 
   enum role: { customer: 0, service_provider: 1 }
 
-  has_many :service_providers
-  has_many :customers
+  has_one :service_provider
+  has_one :customer
 
   after_create :set_role
 

@@ -1,0 +1,2 @@
+module ServiceProviders::ServiceAvailableSlotsHelper
+end

@@ -1,0 +1,14 @@
+<h2>Slot Details</h2>
+
+<p>
+  <strong>Start Time:</strong>
+  <%= @slot.start_time.strftime("%Y-%m-%d %H:%M") %>
+</p>
+
+<p>
+  <strong>End Time:</strong>
+  <%= @slot.end_time.strftime("%Y-%m-%d %H:%M") %>
+</p>
+
+<%= link_to 'Edit', edit_service_providers_service_service_available_slot_path(@service, @slot) %> |
+<%= link_to 'Back to List', service_providers_service_service_available_slots_path(@service) %>

@@ -1,0 +1,25 @@
+<%= form_with model: [:service_providers, @service, @slot] do |f| %>
+  <% if @slot.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+        <% @slot.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :start_time %><br>
+    <%= f.datetime_select :start_time %>
+  </div>
+
+  <div>
+    <%= f.label :end_time %><br>
+    <%= f.datetime_select :end_time %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

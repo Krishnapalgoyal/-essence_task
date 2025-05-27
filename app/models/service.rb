@@ -1,5 +1,6 @@
 class Service < ApplicationRecord
   belongs_to :service_provider
+  has_many :service_available_slots
 
   def self.ransackable_associations(auth_object = nil)
     ["service_provider"]

@@ -1,0 +1,16 @@
+<h1>My Services</h1>
+
+<%= link_to 'New Service', new_service_providers_service_path, class: 'btn btn-success' %>
+
+<ul>
+  <% @services.each do |service| %>
+    <li>
+      <strong><%= service.name %></strong> - <%= service.description %>
+      <br>
+      <%= link_to 'Show', service_providers_service_path(service) %> |
+      <%= link_to 'Edit', edit_service_providers_service_path(service) %> |
+      <%= link_to 'Delete', service_providers_service_path(service), method: :delete, data: { confirm: 'Are you sure?' } %> |
+      <%= link_to 'Manage Slots', service_providers_service_service_available_slots_path(service) %>
+    </li>
+  <% end %>
+</ul>
